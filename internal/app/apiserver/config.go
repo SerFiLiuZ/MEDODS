@@ -9,7 +9,7 @@ import (
 
 type Config struct {
 	DBconnecturi string
-	PORT         string
+	Port         string
 }
 
 const (
@@ -31,6 +31,6 @@ func LoadEnv(logger *utils.Logger) error {
 func GetConfig() *Config {
 	return &Config{
 		DBconnecturi: os.Getenv("DB_CONNECT_URI"),
-		PORT:         os.Getenv("PORT"),
+		Port:         os.Getenv("PORT"),
 	}
 }

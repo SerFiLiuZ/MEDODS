@@ -17,4 +17,10 @@ func main() {
 	config := apiserver.GetConfig()
 
 	logger.Debugf("config: %v", config)
+
+	logger.Infof("Starting server...")
+
+	if err := apiserver.Start(config, logger); err != nil {
+		logger.Fatal(err.Error())
+	}
 }
