@@ -35,7 +35,7 @@ func Start(config *Config, logger *utils.Logger) error {
 
 	logger.Debugf("db: %v", db)
 
-	store := sqlstore.New(db.client)
+	store := sqlstore.New(db.client, db.ctx)
 
 	logger.Debugf("store: %v", store)
 

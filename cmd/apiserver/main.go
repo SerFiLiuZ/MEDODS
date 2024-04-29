@@ -7,7 +7,7 @@ import (
 
 func main() {
 	logger := utils.NewLogger()
-	logger.EnableDebug()
+	//logger.EnableDebug()
 
 	err := apiserver.LoadEnv(logger)
 	if err != nil {

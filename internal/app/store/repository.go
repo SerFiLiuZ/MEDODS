@@ -5,9 +5,10 @@ import (
 )
 
 type UserRepository interface {
-	Receive(guid, jwtKey string) (*models.AuthUser, error)
+	Receive(guid string, jwtKey []byte) (*models.AuthUser, error)
 }
 
 type TokenRepository interface {
-	GetAccessRefreshTokens(guid, jwtKey string) (*models.AuthUser, error)
+	GetAccessRefreshTokens(guid string, jwtKey []byte) (*models.AuthUser, error)
+	GetHashedToken(token string) (string, error)
 }

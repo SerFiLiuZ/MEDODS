@@ -1,19 +1,23 @@
 package sqlstore
 
 import (
+	"context"
+
 	"github.com/SerFiLiuZ/MEDODS/internal/app/store"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type Store struct {
 	db              *mongo.Client
+	ctx             *context.Context
 	userRepository  *UserRepository
 	tokenRepository *TokenRepository
 }
 
-func New(db *mongo.Client) *Store {
+func New(db *mongo.Client, ctx *context.Context) *Store {
 	return &Store{
-		db: db,
+		db:  db,
+		ctx: ctx,
 	}
 }
 

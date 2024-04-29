@@ -10,7 +10,7 @@ import (
 type Config struct {
 	DBconnecturi string
 	Port         string
-	JwtKey       string
+	JwtKey       []byte
 }
 
 const (
@@ -33,6 +33,6 @@ func GetConfig() *Config {
 	return &Config{
 		DBconnecturi: os.Getenv("DB_CONNECT_URI"),
 		Port:         os.Getenv("PORT"),
-		JwtKey:       os.Getenv("JWTKEY"),
+		JwtKey:       []byte(os.Getenv("JWTKEY")),
 	}
 }
