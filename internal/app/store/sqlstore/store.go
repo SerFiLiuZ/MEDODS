@@ -6,8 +6,9 @@ import (
 )
 
 type Store struct {
-	db             *mongo.Client
-	userRepository *UserRepository
+	db              *mongo.Client
+	userRepository  *UserRepository
+	tokenRepository *TokenRepository
 }
 
 func New(db *mongo.Client) *Store {
@@ -26,4 +27,16 @@ func (s *Store) User() store.UserRepository {
 	}
 
 	return s.userRepository
+}
+
+func (s *Store) Token() store.TokenRepository {
+	if s.tokenRepository != nil {
+		return s.tokenRepository
+	}
+
+	s.tokenRepository = &TokenRepository{
+		store: s,
+	}
+
+	return s.tokenRepository
 }

@@ -39,7 +39,7 @@ func Start(config *Config, logger *utils.Logger) error {
 
 	logger.Debugf("store: %v", store)
 
-	srv := newServer(store, logger)
+	srv := newServer(store, logger, config)
 
 	logger.Infof("Server started on port %s", config.Port)
 
